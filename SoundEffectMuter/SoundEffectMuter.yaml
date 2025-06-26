@@ -1,0 +1,17 @@
+name: SoundEffectMuter
+author: spide-r
+punchline: Quiets the PvP Experience.
+description: This plugin silences all text sound effects and quick chat while in PvP zones. No Configuration needed! Just install and forget.
+repo_url: https://github.com/spide-r/SoundEffectMuter
+IconURL: https://github.com/spide-r/SoundEffectMuter/blob/main/images/icon.png
+
+tags:
+  - frontlines
+  - cc
+  - pvp
+  - sound effect
+  - se
+  - quick chat
+category_tags:
+  - utility
+  - other
