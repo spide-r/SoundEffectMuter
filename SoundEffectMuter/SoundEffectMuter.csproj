@@ -29,7 +29,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="SoundEffectMuter.yaml" />
+        <Content Include="SoundEffectMuter.json" />
         <Content Include="SoundEffectMuter\packages.lock.json" />
     </ItemGroup>
 

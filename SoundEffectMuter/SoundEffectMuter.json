@@ -1,0 +1,21 @@
+{
+  "name": "SoundEffectMuter",
+  "author": "spide-r",
+  "punchline": "Quiets the PvP Experience.",
+  "description": "This plugin silences all text sound effects and quick chat while in PvP zones including the Wolves Den.\nNo Configuration needed! Just install and forget.\n\nFor feedback, please contact .spider in the Dalamud discord.",
+  "repo_url": "https://github.com/spide-r/SoundEffectMuter",
+  "IconURL": "https://github.com/spide-r/SoundEffectMuter/blob/main/images/icon.png",
+  "AcceptsFeedback": false,
+  "tags": [
+    "frontlines",
+    "cc",
+    "pvp",
+    "sound effect",
+    "se",
+    "quick chat"
+  ],
+  "category_tags": [
+    "utility",
+    "other"
+  ]
+}
