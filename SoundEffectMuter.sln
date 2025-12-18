@@ -12,5 +12,6 @@ Global
 		{801D7411-C865-4DDC-BD45-2BDAB5E82138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{801D7411-C865-4DDC-BD45-2BDAB5E82138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{801D7411-C865-4DDC-BD45-2BDAB5E82138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801D7411-C865-4DDC-BD45-2BDAB5E82138}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

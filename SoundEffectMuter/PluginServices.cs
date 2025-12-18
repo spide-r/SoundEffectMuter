@@ -16,6 +16,9 @@ internal class PluginServices {
     [PluginService]
     internal static IGameInteropProvider GameInteropProvider { get; private set; }
     
+    [PluginService]
+    internal static IPluginLog PluginLog { get; private set; }
+    
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
         pluginInterface.Create<PluginServices>();
     }
