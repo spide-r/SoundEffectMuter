@@ -17,7 +17,7 @@ public class Hooking: IDisposable
          {
              if (PluginServices.ClientState.IsPvP)
              {
-                 PluginServices.PluginLog.Debug($"{effectId}, {a2}, {a3}, {a4}");
+                 //PluginServices.PluginLog.Debug($"{effectId}, {a2}, {a3}, {a4}");
                  return;
              }
          }
