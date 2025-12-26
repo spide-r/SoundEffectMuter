@@ -19,8 +19,23 @@ internal class PluginServices {
     [PluginService]
     internal static IPluginLog PluginLog { get; private set; }
     
+    [PluginService]
+    internal static IChatGui ChatGui { get; private set; }
+    
+    [PluginService]
+    internal static IDalamudPluginInterface DalamudPluginInterface { get; private set; }
+    
+    [PluginService]
+    internal static IDutyState DutyState { get; private set; }
+    internal static Config Config { get; private set; }
+    
+    
     internal static void Initialize(IDalamudPluginInterface pluginInterface) {
-        pluginInterface.Create<PluginServices>();
+       pluginInterface.Create<PluginServices>();
+       Config = pluginInterface.GetPluginConfig() as Config ?? new Config();
+       Config.Initialize(pluginInterface);
     }
+    
+    
 }
 #pragma warning restore 8618
