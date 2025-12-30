@@ -13,6 +13,11 @@ public class Hooking: IDisposable
     private readonly Hook<UIGlobals.Delegates.PlaySoundEffect> _playSoundEffectHook = null!;
      public void PlaySoundEffectDetour(uint effectId, nint a2, nint a3, byte a4)
      {
+         if (!PluginServices.Config.Enabled)
+         {
+             _playSoundEffectHook.Original(effectId, a2, a3, a4);
+             return;
+         }
          if (effectId is >= 37 and <= 52) //se.1 to se.16 
          {
              if (InFrontlines() && PluginServices.Config.Frontlines)

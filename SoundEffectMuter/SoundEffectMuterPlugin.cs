@@ -20,10 +20,22 @@ public class SoundEffectMuterPlugin: IDalamudPlugin
         pluginInterface.UiBuilder.Draw += DrawUi;
         PluginServices.ClientState.Login += PluginUpdateMessage;
         pluginInterface.UiBuilder.OpenConfigUi += ToggleConfigWindow;
+        PluginServices.CommandManager.AddHandler("/ptogglesem", new CommandInfo(ToggleCommand)
+        {
+            HelpMessage = "Enable/Disable plugin",
+        });
         PluginUpdateMessage();
 
     }
-    
+
+    private void ToggleCommand(string command, string arguments)
+    {
+        PluginServices.Config.Enabled = !PluginServices.Config.Enabled;
+        PluginServices.Config.Save();
+        PluginServices.ChatGui.Print((PluginServices.Config.Enabled) ? "Enabled!" : "Disabled!", 
+            "SoundEffectMuter");
+    }
+
     private void DrawUi()
     {
         WindowSystem.Draw();

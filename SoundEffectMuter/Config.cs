@@ -14,6 +14,7 @@ public class Config: IPluginConfiguration
     public bool Duties = false;
     public bool Overworld = false;
     public bool ShowNotification = true;
+    public bool Enabled = true;
     
     [NonSerialized]
     private IDalamudPluginInterface? _pluginInterface;

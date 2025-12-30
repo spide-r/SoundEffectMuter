@@ -30,11 +30,20 @@ public class ConfigWindow: Window, IDisposable
 
     public override void Draw()
     {
+        var enabled = _config.Enabled;
         var cc = _config.Cc;
         var frontlines = _config.Frontlines;
         var disableAllSoundEffectsInCc = _config.DisableAllSoundEffectsInCc;
         var duties = _config.Duties;
         var overworld = _config.Overworld;
+        
+        if (ImGui.Checkbox("Enable plugin?", ref enabled))
+        {
+            _config.Enabled = enabled;
+            _config.Save();
+        }
+
+        
         if (ImGui.Checkbox("Mute CC Quickchat?", ref cc))
         {
             _config.Cc = cc;
