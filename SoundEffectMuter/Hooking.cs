@@ -2,6 +2,7 @@
 using System.Linq;
 using Dalamud.Hooking;
 using Dalamud.Utility.Signatures;
+using FFXIVClientStructs.FFXIV.Client.Sound;
 using FFXIVClientStructs.FFXIV.Client.UI;
 
 namespace SoundEffectMuter;
@@ -11,12 +12,13 @@ public class Hooking: IDisposable
 
     [Signature("E8 ?? ?? ?? ?? 45 0F B7 C5", DetourName = nameof(PlaySoundEffectDetour))]
     private readonly Hook<UIGlobals.Delegates.PlaySoundEffect> _playSoundEffectHook = null!;
-     public void PlaySoundEffectDetour(uint effectId, nint a2, nint a3, byte a4)
+     public unsafe void PlaySoundEffectDetour(uint effectId, SoundData** a2, SoundData** a3, byte a4)
      {
          if (!PluginServices.Config.Enabled)
          {
              _playSoundEffectHook.Original(effectId, a2, a3, a4);
              return;
+             
          }
          if (effectId is >= 37 and <= 52) //se.1 to se.16 
          {
@@ -46,7 +48,7 @@ public class Hooking: IDisposable
              }
          }
 
-         _playSoundEffectHook.Original(effectId, a2, a3, a4);
+        _playSoundEffectHook.Original(effectId, a2, a3, a4);
 
      }
 
@@ -62,10 +64,9 @@ public class Hooking: IDisposable
         var ccTerritories = new[] { 149, 1032, 1033, 1034, 1058, 1059, 1060, 1116, 1117, 1138, 1139, 1293, 1294 };
         return ccTerritories.Contains((int)m);
     }
-
     private bool InOverworld()
     {
-        return !PluginServices.ClientState.IsPvP && !PluginServices.DutyState.IsDutyStarted;
+        return !PluginServices.ClientState.IsPvPExcludingDen && !PluginServices.DutyState.IsDutyStarted;
     }
 
     private bool InFrontlines()
