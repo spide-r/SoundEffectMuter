@@ -50,7 +50,7 @@ public class ConfigWindow: Window, IDisposable
             _config.Save();
         }
 
-        if (ImGui.Checkbox("Mute Sound Effects in Frontlines?", ref frontlines))
+        if (ImGui.Checkbox("Mute Sound Effects in Frontlines & Rival Wings?", ref frontlines))
         {
             _config.Frontlines = frontlines;
             _config.Save();

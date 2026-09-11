@@ -20,6 +20,9 @@ internal class PluginServices {
     internal static IPluginLog PluginLog { get; private set; }
     
     [PluginService]
+    internal static IPartyList PartyList { get; private set; }
+    
+    [PluginService]
     internal static IChatGui ChatGui { get; private set; }
     
     [PluginService]

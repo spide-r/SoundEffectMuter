@@ -22,7 +22,7 @@ public class Hooking: IDisposable
          }
          if (effectId is >= 37 and <= 52) //se.1 to se.16 
          {
-             if (InFrontlines() && PluginServices.Config.Frontlines)
+             if (InFrontlinesAndRw() && PluginServices.Config.Frontlines)
              {
                  return;
              }
@@ -60,20 +60,17 @@ public class Hooking: IDisposable
 
     private bool InCc()
     {
-        uint m = PluginServices.ClientState.TerritoryType;
-        var ccTerritories = new[] { 149, 1032, 1033, 1034, 1058, 1059, 1060, 1116, 1117, 1138, 1139, 1293, 1294 };
-        return ccTerritories.Contains((int)m);
+        return PluginServices.ClientState.IsPvPExcludingDen && !PluginServices.PartyList.IsAlliance;
     }
     private bool InOverworld()
     {
         return !PluginServices.ClientState.IsPvPExcludingDen && !PluginServices.DutyState.IsDutyStarted;
     }
 
-    private bool InFrontlines()
+    private bool InFrontlinesAndRw()
     {
-        uint m = PluginServices.ClientState.TerritoryType;
-        var flTerritories = new[] { 376, 431, 554, 888, 1273, 1313 };
-        return flTerritories.Contains((int)m);    
+        return PluginServices.ClientState.IsPvPExcludingDen && PluginServices.PartyList.IsAlliance;
+  
     }
 
     private bool InDuty()
