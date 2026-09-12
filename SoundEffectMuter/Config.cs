@@ -10,6 +10,7 @@ public class Config: IPluginConfiguration
 
     public bool Cc = true;
     public bool Frontlines = true;
+    public bool RivalWings = true;
     public bool DisableAllSoundEffectsInCc = false;
     public bool Duties = false;
     public bool Overworld = false;

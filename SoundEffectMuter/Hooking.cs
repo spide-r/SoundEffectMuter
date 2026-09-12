@@ -22,7 +22,11 @@ public class Hooking: IDisposable
          }
          if (effectId is >= 37 and <= 52) //se.1 to se.16 
          {
-             if (InFrontlinesAndRw() && PluginServices.Config.Frontlines)
+             if (InFrontlines() && PluginServices.Config.Frontlines)
+             {
+                 return;
+             }
+             if (InRivalWings() && PluginServices.Config.RivalWings)
              {
                  return;
              }
@@ -67,9 +71,14 @@ public class Hooking: IDisposable
         return !PluginServices.ClientState.IsPvPExcludingDen && !PluginServices.DutyState.IsDutyStarted;
     }
 
-    private bool InFrontlinesAndRw()
+    private bool InFrontlines()
     {
         return PluginServices.ClientState.IsPvPExcludingDen && PluginServices.PartyList.IsAlliance;
+    }
+
+    private bool InRivalWings()
+    {
+        return PluginServices.ClientState.TerritoryType is 729 or 791;
   
     }
 
